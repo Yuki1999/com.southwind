@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 500px;height: 330px;margin-top: 130px;border: 1px solid #009688;padding-top: 60px;border-radius: 15px">
+
+</div>
+<div id="main2" style="width: 500px;height: 330px;margin-top: 130px;margin-left: 800px;border: 1px solid #009688;padding-top: 60px;border-radius: 15px">
+
+</div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '损坏次数'
+        },
+        tooltip: {},
+        legend: {
+            data:['美的','海尔','格力']
+        },
+        xAxis: {
+            data: ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月" ]
+        },
+        yAxis: {},
+        series: [{
+            name: '美的',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20,5, 20, 36, 10, 10, 20]
+        },
+            {
+                name: '海尔',
+                type: 'bar',
+                data: [15, 2, 3, 1, 10, 2,15, 2, 3, 1, 10, 2]
+            },
+            {
+                name: '格力',
+                type: 'bar',
+                data: [15, 2, 3, 1, 10, 2,15, 2, 3, 1, 10, 2]
+            }  ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart2 = echarts.init(document.getElementById('main2'));
+    // 指定图表的配置项和数据
+    var option2 = {
+        title: {
+            text: '洗衣机使用次数'
+        },
+        tooltip: {},
+        legend: {
+            data:['美的','海尔','格力']
+        },
+        xAxis: {
+            data: ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月" ]
+        },
+        yAxis: {},
+        series: [{
+            name: '美的',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20,5, 20, 36, 10, 10, 20]
+        },
+            {
+                name: '海尔',
+                type: 'bar',
+                data: [15, 2, 3, 1, 10, 2,15, 2, 3, 1, 10, 2]
+            },
+            {
+                name: '格力',
+                type: 'bar',
+                data: [15, 2, 3, 1, 10, 2,15, 2, 3, 1, 10, 2]
+            }  ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart2.setOption(option2);
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

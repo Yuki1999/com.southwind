@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>js筛选功能</title>
+    <!--<link type="text/css" href="css/style.css" rel="stylesheet" />-->
+    <link rel="stylesheet" th:href="@{/layui/css/style.css}" media="all">
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+</head>
+<body>
+<div id="box">
+    <dl>
+        <dt>品牌：</dt>
+        <dd>美的</dd>
+        <dd>海尔</dd>
+        <dd>格力</dd>
+    </dl>
+    <dl>
+        <dt>小区：</dt>
+        <dd>水韵城</dd>
+        <dd>项王小区</dd>
+        <dd>水木江南</dd>
+        <dd>碧桂园</dd>
+    </dl>
+    <dl>
+        <dt>运营商：</dt>
+        <dd>U净</dd>
+        <dd>轻氧</dd>
+        <dd>衣洗林</dd>
+        <dd>懒猴洗衣</dd>
+        <dd>星云</dd>
+    </dl>
+    <dl class="select" style="border-bottom-width: 0px;">
+        <dt>已选条件：</dt>
+    </dl>
+</div>
+
+<div class="layui-container" style="margin-top: 50px;width: 750px;">
+
+    <table class="layui-hide" id="test" style="width: 300px" lay-filter="test"></table>
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+    <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
+    <script>
+        layui.use('table', function(){
+            var table = layui.table;
+
+            table.render({
+                elem: '#test'
+                ,url:'/menu/findAll'
+                ,title: '菜单列表'
+                ,cols: [
+                    [
+                        {field:'id', width:100, title: '序号', sort: true}
+                        ,{field:'name', width:200, title: '设备编号',templet:function (data){
+                            return data.location.name
+                        }}
+                        ,{field:'price', width:100, title: '地点'}
+                        ,{field:'flavor', width:100, title: '品牌'}
+                        ,{field:'tid',width:100,  title: '运营商',templet:function(data){
+                            return data.type.name
+                        }
+                    }
+                        ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:120}
+                    ]
+                ]
+                ,page: true
+            });
+
+            //监听行工具事件
+            table.on('tool(test)', function(obj){
+                var data = obj.data;
+                if(obj.event === 'del'){
+                    layer.confirm('确定要删除吗？', function(index){
+                        window.location.href="/menu/deleteById/"+data.id;
+                        layer.close(index);
+                    });
+                } else if(obj.event === 'edit'){
+                    window.location.href="/menu/findById/"+data.id;
+                }
+            });
+        });
+    </script>
+
+</div>
+<script>
+    //二级菜单联动
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+</script>
+
+<script th:src="@{/layui/script.js}" charset="utf-8"></script>
+<!--<script src="/layui/script.js"></script>-->
+
+</body>
+</html>

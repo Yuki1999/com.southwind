@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 500px;height: 330px;margin-top: 130px;border: 1px solid #009688;padding-top: 60px;border-radius: 15px"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '用电量'
+        },
+        tooltip: {},
+        legend: {
+            data:['美的','海尔','格力']
+        },
+        xAxis: {
+            data: ["小区1","小区2","小区3","小区4","小区5" ]
+        },
+        yAxis: {},
+        series: [{
+            name: '美的',
+            type: 'bar',
+            data: [5, 20, 3, 10, 10 ]
+        },
+            {
+                name: '海尔',
+                type: 'bar',
+                data: [5, 2, 32, 1, 10]
+            },
+            {
+                name: '格力',
+                type: 'bar',
+                data: [15, 2, 3, 1, 10]
+            }  ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>使用 jQuery validate 表单验证</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/scripts/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/scripts/jquery.validate.min.js}"></script>
+    <script th:src="@{/scripts/messages_zh.min.js}"></script>
+<!--    <script th:src="@{/scripts/user/login.js}"></script>-->
+<!--    <script th:src="@{/layui/login.js}" charset="utf-8"></script>-->
+</head>
+<body>
+<script>
+    function findAllDepts() {
+        $.ajax({
+            async : false,    //表示请求是否异步处理
+            type : "get",    //请求类型
+            url : "http://localhost:8030/user/findAll",//请求的 URL地址
+            headers: {
+              "X-Requested-With": "XMLHttpRequest",
+              "Content-Type": "application/json"
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            data: {
+              page: 1,
+              limit: 2
+            },
+            dataType : "json",//返回的数据类型
+            success: function (data) {
+                console.log(data.data);  //在控制台打印服务器端返回的数据
+                for(var i=0;i<data.length;i++){
+                    console.log(data[i].deptId+" "+data[i].deptName);
+                }
+                $("input[name='userName']").empty();
+                $("input[name='userName']").val(data.data[0].username);
+                $("input[name='password']").empty();
+                $("input[name='password']").val(data.data[0].password);
+                $("input[name='email']").empty();
+                $("input[name='email']").val(data.data[0].email);
+                $("select[name='departmentId']").empty();
+                $("select[name='departmentId']").append('<option value="">——请选择——</option>');
+                for(var i=0;i<data.length;i++){
+                    var html ='<option value="'+data[i].deptId+'">';
+                    html +=data[i].deptName + '</option>';
+                    $("select[name='departmentId']").append(html);  //将数据显示在html页面
+                }
+            },
+            error:function (data) {
+                // alert(data.result);
+            }
+        });
+    };
+
+    $(document).ready(function () {
+        findAllDepts();  //页面加载完成就执行该方法
+    });
+</script>
+<form id="form1" action="/userLogin">
+    <input type="text" id="userName" class="userName" name="userName"><br>
+    <input type="email" id="email" name="email"><br>
+    <select id="departmentId" name="departmentId">
+    </select><br>
+    <input type="password" id="password" class="password" name="password"><br>
+    <input type="submit" value="login">
+</form>
+</body>
+</html>

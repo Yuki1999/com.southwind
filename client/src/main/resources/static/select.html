@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>js商品筛选功能</title>
+
+	<!--<link type="text/css" href="css/style.css" rel="stylesheet" />-->
+	<link rel="stylesheet" th:href="@{/layui/css/style.css}" media="all">
+
+</head>
+
+<body>
+
+<div id="box">
+	<dl>
+		<dt>品牌：</dt>
+		<dd>惠普</dd>
+		<dd>联想</dd>
+		<dd>戴尔</dd>
+		<dd>三星</dd>
+		<dd>宏基</dd>
+		<dd>苹果</dd>
+		<dd>神舟</dd>
+		<dd>华硕</dd>
+		<dd>方正</dd>
+	</dl>
+	<dl>
+		<dt>价格：</dt>
+		<dd>3000-3999</dd>
+		<dd>4000-4999</dd>
+		<dd>5000-5999</dd>
+		<dd>6000-6999</dd>
+		<dd>7000-7999</dd>
+		<dd>8000-8999</dd>
+		<dd>9000-9999</dd>
+		<dd>10000以上</dd>
+	</dl>
+	<dl>
+		<dt>尺寸：</dt>
+		<dd>8.9英寸以及以下</dd>
+		<dd>11英寸</dd>
+		<dd>12英寸</dd>
+		<dd>13英寸</dd>
+		<dd>14英寸</dd>
+		<dd>15英寸</dd>
+		<dd>16英寸</dd>
+	</dl>
+	<dl style="border: none">
+		<dt>显卡：</dt>
+		<dd>独立显卡</dd>
+		<dd>集成显卡</dd>
+		<dd>核芯显卡</dd>
+	</dl>
+	<dl class="select" style="border-bottom-width: 0px;">
+		<dt>已选条件：</dt>
+	</dl>
+</div>
+<script th:src="@{/layui/script.js}" charset="utf-8"></script>
+<!--<script src="/layui/script.js"></script>-->
+
+</body>
+</html>

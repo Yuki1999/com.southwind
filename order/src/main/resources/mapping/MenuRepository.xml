@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.southwind.repository.MenuRepository">
+
+	<resultMap id="menuMap" type="Menu">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="price" column="price"/>
+		<result property="flavor" column="flavor"/>
+		<!-- 映射type -->
+		<association property="type" select="com.southwind.repository.TypeRepository.findById" column="tid">
+		</association>
+	</resultMap>
+	
+	<select id="findById" parameterType="long" resultMap="menuMap">
+		select * from t_menu where id = #{id};
+	</select>
+
+
+</mapper>

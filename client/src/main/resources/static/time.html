@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org">
+	<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--	<script th:src="@{/layui/countdown.js}"></script>-->
+		<!--	<script th:src="@{/layui/jquery-2.1.1.min.js}"></script>-->
+		<script src="layui/jquery-2.1.1.min.js"></script>
+		<script src="layui/countdown.js"></script>
+		<title>倒计时插件</title>
+<style>
+	h3{}
+	.ys1{
+		color: #009AC1;
+		font-weight: bold;
+	}
+	.ys2{
+	color: #2FAB11;
+	font-weight: bold;
+	}
+	.ys3{
+	color: #C16000;
+	font-weight: bold;
+	}
+</style>
+</head>
+<body>
+<div class="container" style="margin-top: 130px;margin-left:400px;">
+<!--     <h3>60秒倒计时</h3>-->
+<!--     <p>data="60" </p>-->
+<!--	<div class="container timeBar ys1" data="60" ></div>-->
+	
+	<h3>40分钟倒计时</h3>
+<!--	<p>data="40分钟倒计时" </p>-->
+	<div class="container timeBar ys2" data="2400" ></div>
+	
+<!--	<h3>160000秒倒计时</h3>-->
+<!--	<p>data="160000" </p>-->
+<!--	<div class="container timeBar ys3" data="160000" ></div>-->
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		$(".timeBar").each(function () {
+			$(this).countdownsync({
+				dayTag: "",
+				hourTag: "<label class='tt hh dib vam'>00</label><span>时</span>",
+				minTag: "<label class='tt mm dib vam'>00</label><span>分</span>",
+				secTag: "<label class='tt ss dib vam'>00</label><span>秒</span>",
+				dayClass: ".dd",
+				hourClass: ".hh",
+				minClass: ".mm",
+				secClass: ".ss",
+				isDefault: false,
+				showTemp:1
+
+			}, function () {
+				location.reload();
+			});
+		});
+	});
+	
+</script>
+
+</body>
+</html>
