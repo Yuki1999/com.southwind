@@ -6,6 +6,6 @@ public class Menu {
     private long id;
     private Location location;
     private String name;
-    private String flavor;
+    private Brand brand;
     private Type type;
 }

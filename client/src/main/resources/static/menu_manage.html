@@ -19,7 +19,7 @@
     </dl>
     <dl>
         <dt>小区：</dt>
-        <dd>水韵城</dd>
+        <dd onclick="test()">水韵城</dd>
         <dd>项王小区</dd>
         <dd>水木江南</dd>
         <dd>碧桂园</dd>
@@ -41,11 +41,16 @@
 
     <table class="layui-hide" id="test" style="width: 300px" lay-filter="test"></table>
     <script type="text/html" id="barDemo">
-        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <button class="layui-btn layui-btn-xs" lay-event="edit" onclick="test()">编辑</button>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     </script>
     <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
     <script>
+        function test(){
+            this.console.log("12312312");
+            this.alert("123123123")
+        }
+
         layui.use('table', function(){
             var table = layui.table;
 
@@ -60,7 +65,10 @@
                             return data.location.name
                         }}
                         ,{field:'name', width:100, title: '设备编号'}
-                        ,{field:'flavor', width:100, title: '品牌'}
+                        // ,{field:'flavor', width:100, title: '品牌'}
+                        ,{field:'flavor',width:100,  title: '品牌',templet:function(data){
+                            return data.brand.name;
+                        }}
                         ,{field:'tid',width:100,  title: '运营商',templet:function(data){
                             return data.type.name
                         }
@@ -79,9 +87,10 @@
                         window.location.href="/menu/deleteById/"+data.id;
                         layer.close(index);
                     });
-                } else if(obj.event === 'edit'){
-                    window.location.href="/menu/findById/"+data.id;
                 }
+                // else if(obj.event === 'edit'){
+                //     window.location.href="/menu/findById/"+data.id;
+                // }
             });
         });
     </script>

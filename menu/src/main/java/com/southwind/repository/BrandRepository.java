@@ -2,12 +2,12 @@ package com.southwind.repository;
 
 import com.southwind.entity.Location;
 import com.southwind.entity.Menu;
-import com.southwind.entity.Type;
 
 import java.util.List;
 import java.util.Map;
 
-public interface LocationRepository {
+public interface BrandRepository {
     public Location findById(long id);
     public List<Location> findAll();
 }
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.southwind.repository.BrandRepository">
+
+    <select id="findById" parameterType="long" resultType="Brand">
+		select * from t_brand where id = #{id}
+	</select>
+
+    <select id="findAll" resultType="Brand">
+		select * from t_brand
+	</select>
+
+</mapper>

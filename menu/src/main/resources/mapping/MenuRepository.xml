@@ -6,8 +6,10 @@
 		<id property="id" column="id"/>
 <!--		<result property="name" column="name"/>-->
 		<result property="name" column="price"/>
-		<result property="flavor" column="flavor"/>
+<!--		<result property="brand" column="flavor"/>-->
 		<!-- 映射type -->
+        <association property="brand" select="com.southwind.repository.BrandRepository.findById" column="flavor">
+        </association>
 		<association property="location" select="com.southwind.repository.LocationRepository.findById" column="name">
 		</association>
 		<association property="type" select="com.southwind.repository.TypeRepository.findById" column="tid">
@@ -38,4 +40,19 @@
 	<delete id="deleteById" parameterType="long">
 		delete from t_menu where id = #{id}
 	</delete>
+
+	<select id="selectByForeignKey" resultMap="menuMap">
+		select * from t_menu
+		<where>
+			<if test="brand!= '' ">
+				t_menu.flavor = (select id from t_brand where t_brand.name = #{brand})
+			</if>
+			<if test="type!= '' ">
+				and t_menu.tid = (select id from t_type where t_type.name = #{type})
+			</if>
+			<if test="location!= '' ">
+				and t_menu.name = (select id from t_location where t_location.name = #{location})
+			</if>
+		</where>
+	</select>
 </mapper>
