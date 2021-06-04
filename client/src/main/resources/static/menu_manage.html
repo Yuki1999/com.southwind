@@ -56,10 +56,10 @@
                 ,cols: [
                     [
                         {field:'id', width:100, title: '序号', sort: true}
-                        ,{field:'name', width:200, title: '设备编号',templet:function (data){
+                        ,{field:'name', width:200, title: '地点',templet:function (data){
                             return data.location.name
                         }}
-                        ,{field:'price', width:100, title: '地点'}
+                        ,{field:'name', width:100, title: '设备编号'}
                         ,{field:'flavor', width:100, title: '品牌'}
                         ,{field:'tid',width:100,  title: '运营商',templet:function(data){
                             return data.type.name

@@ -5,7 +5,7 @@ import  lombok.Data;
 public class Menu {
     private long id;
     private Location location;
-    private double price;
+    private String name;
     private String flavor;
     private Type type;
 }
