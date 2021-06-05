@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.southwind.repository.LogRepository">
+
+    <resultMap id="misc" type="map">
+        <result column="eid" property="deviceId" javaType="java.math.BigInteger"></result>
+        <result column="ac_water" property="acWater" javaType="java.math.BigInteger"></result>
+        <result column="ac_elc" property="acElc" javaType="java.math.BigInteger"></result>
+        <result column="start_time" property="startTime" javaType="java.lang.String"></result>
+        <result column="end_time" property="endTime" javaType="java.lang.String"></result>
+    </resultMap>
+
+    <select id="selectAll" resultMap="misc">
+        select * from t_log
+    </select>
+
+    <insert id="insertSelective">
+        insert into t_log
+        <trim prefix="(" suffixOverrides="," suffix=")">
+            <if test="deviceId!= null ">
+                eid
+            </if>
+            <if test="acWater!= null ">
+                ,ac_water
+            </if>
+            <if test="acElc!= null ">
+                ,ac_elc
+            </if>
+            <if test="startTime!= null ">
+                ,start_time
+            </if>
+            <if test="endTime!= null ">
+                ,end_time
+            </if>
+        </trim>
+        <trim prefix="values(" suffixOverrides="," suffix=")">
+            <if test="deviceId!= null ">
+                #{deviceId}
+            </if>
+            <if test="acWater!= null ">
+                ,#{acWater}
+            </if>
+            <if test="acElc!= null ">
+                ,#{acElc}
+            </if>
+            <if test="startTime!= null ">
+                ,#{startTime}
+            </if>
+            <if test="endTime!= null ">
+                ,#{endTime}
+            </if>
+        </trim>
+    </insert>
+</mapper>
